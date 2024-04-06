@@ -46,7 +46,7 @@ HEADERS = {
 
 DOMEN = "http://tengrinews.kz"
 
-URL = "https://tengrinews.kz/tag/алматы/"
+URL = "https://tengrinews.kz/tag/алматы"
 
 def get_response(url_def, headers_def = HEADERS):      
     response = requests.get(url = url_def, headers = headers_def) 
@@ -58,7 +58,6 @@ def get_response(url_def, headers_def = HEADERS):
     
 def get_text(response):
     soup = BeautifulSoup(response, 'html.parser') 
-    
     all_text = soup.find("div", class_="content_main_text")
     paragraphs = all_text.find_all('p') if all_text else [] 
     tags_div = soup.find("div", class_="content_main_text_tags")
@@ -68,18 +67,14 @@ def get_text(response):
     
     return [full_text, ai_text, tags]
     
-# def get_bad_or_good(full_text) -> bool:
-    
 def get_ai(full_text):
     response = f"Твоя задача заключается в том чтобы полностью обьяснит всю важную информацию в новостной статье очень кратко и ясно.  {full_text}"
     text = model.generate_content(response)
-    # print(text)
     return text.text
     
 def get_soup(response):
     soup = BeautifulSoup(response, 'html.parser')
     all_news = soup.find_all("div", class_="content_main_item")
-    
     parse_news = []
     for item in all_news:
         news_url = ""
@@ -95,12 +90,10 @@ def get_soup(response):
             if image:
                 source_tags = image.find_all('source')
                 if source_tags:
-                    image_url = source_tags[0].get('srcset') 
+                    image_url = DOMEN + source_tags[0].get('srcset') 
             text_response = get_response(url_def=news_url) 
             text1 = get_text(text_response)
-            tags = [text1[text] for text in range(2, len(text1))] if len(text1) > 1 else []
-
-            # print(tags) 
+            tags = [text1[text] for text in range(1, len(text1))] if len(text1) > 0 else []
         except Exception as e:
             print(e)
         try:
@@ -130,9 +123,12 @@ def get_soup(response):
 
 def news_parsing():
     soup = []
-    for i in range(1, 2):
+    for i in range(1, 5):
         response = get_response(url_def=URL+"/page/"f'{i}/')
-        soup.append(get_soup(response))
+        soup.append({
+            'id' : i,
+            'data' : get_soup(response)
+            })
         
     with open(f"core//json//tengrinews.json", "w", encoding="UTF-8") as file:
         json.dump(soup, file, indent=5, ensure_ascii=False)

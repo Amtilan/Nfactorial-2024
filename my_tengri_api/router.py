@@ -1,25 +1,22 @@
-from typing import Annotated
-
-from fastapi import APIRouter, Depends
-
-from repository import TaskRepository
-from schemas import STaskAdd, STask, STaskId
-
+from fastapi import APIRouter
+import aiofiles
+import json
+import datetime
+import def_text 
 router = APIRouter(
-    prefix="/tasks",
-    tags=["Таски"],
+    prefix="/news",  # Assuming we are dealing with news articles.
+    tags=["News"],
 )
 
-
-@router.post("")
-async def add_task(
-        task: Annotated[STaskAdd, Depends()],
-) -> STaskId:
-    task_id = await TaskRepository.add_one(task)
-    return {"ok": True, "task_id": task_id}
+file_path = 'core/json/tengrinews.json'  # Use forward slashes for compatibility.
+date1 = datetime.datetime.now()
 
 
 @router.get("")
-async def get_tasks() -> list[STask]:
-    tasks = await TaskRepository.find_all()
-    return tasks
+async def get_all_articles():
+    if date1.hour == 23:
+        await def_text.news_parsing()
+    async with aiofiles.open(file_path, mode='r', encoding='utf-8') as json_file:
+        data = await json_file.read()
+    articles = json.loads(data)
+    return articles
