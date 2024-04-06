@@ -1,40 +1,25 @@
 const axios = require('axios').default;
 
-axios.get('/user?ID=12345')
-  .then(function (response) {
-    // handle success
-    console.log(response);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .finally(function () {
-    // always executed
-  });
-
-// Optionally the request above could also be done as
-axios.get('/user', {
-    params: {
-      ID: 12345
-    }
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-  .finally(function () {
-    // always executed
-  });  
-
-// Want to use async/await? Add the `async` keyword to your outer function/method.
-async function getUser() {
+async function fetchNews() {
   try {
-    const response = await axios.get('/user?ID=12345');
-    console.log(response);
+    // Replace 'your-api-endpoint' with the actual endpoint URL.
+    const response = await axios.get('http://127.0.0.1:8000/news');
+    
+    // Assuming the response is in the format of the provided JSON data:
+    // {
+    //   "id": 1,
+    //   "data": [ ... ] 
+    // }
+    const articles = response.data.data;
+    
+    // Log the title of each article.
+    articles.forEach(article => {
+      console.log(`Title: ${article.title}`);
+    });
   } catch (error) {
-    console.error(error);
+    console.error('Error fetching news:', error);
   }
 }
+
+// Call the function to fetch news.
+fetchNews();
