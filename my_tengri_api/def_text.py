@@ -3,7 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 import google.generativeai as genai
 import json
-import requests
+import asyncio
+import aiohttp
 # import os
 
 GOOGLE_API_KEY = "AIzaSyCPzEJyZAJ2QsIZ-FPBLPKJiVJg2bX77dg"
@@ -47,16 +48,20 @@ HEADERS = {
 DOMEN = "http://tengrinews.kz"
 
 URL = "https://tengrinews.kz/tag/алматы"
+async def get_ai(full_text):
+    response = f"Твоя задача заключается в том чтобы полностью обьяснит всю важную информацию в новостной статье очень кратко и ясно.  {full_text}"
+    text = await model.generate_content(response)
+    return text.text
 
-def get_response(url_def, headers_def = HEADERS):      
-    response = requests.get(url = url_def, headers = headers_def) 
-    if response.status_code == 200: 
-        src = response.content      
-        return src                  
-    else:
-        return f"Bad response {response.status_code}"
-    
-def get_text(response):
+async def get_response(url_def, headers_def=HEADERS):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url=url_def, headers=headers_def) as response:
+            if response.status == 200:
+                return await response.read()
+            else:
+                return f"Bad response {response.status}"
+
+async def get_text(response):
     soup = BeautifulSoup(response, 'html.parser') 
     all_text = soup.find("div", class_="content_main_text")
     paragraphs = all_text.find_all('p') if all_text else [] 
@@ -64,36 +69,20 @@ def get_text(response):
     tags = [span.get_text() for span in tags_div.find_all('span')] if tags_div else []
     full_text = ' '.join(paragraph.get_text() for paragraph in paragraphs)
     ai_text = get_ai(full_text)
-    
-    return [full_text, ai_text, tags]
-    
-def get_ai(full_text):
-    response = f"Твоя задача заключается в том чтобы полностью обьяснит всю важную информацию в новостной статье очень кратко и ясно.  {full_text}"
-    text = model.generate_content(response)
-    return text.text
-    
-def get_soup(response):
+    return [full_text, ai_text, tags]    
+async def get_soup(response):
+    parse_news = []
     soup = BeautifulSoup(response, 'html.parser')
     all_news = soup.find_all("div", class_="content_main_item")
-    parse_news = []
     for item in all_news:
-        news_url = ""
-        text1 = []
-        image_url = ""
-        tags = []
         try:
-            title = item.find("span", class_="content_main_item_title")
-            description = item.find(class_="content_main_item_announce")
-            date_time = item.find(class_="content_main_item_meta")
+            title = item.find("span", class_="content_main_item_title").text
+            description = item.find(class_="content_main_item_announce").text
+            date_time = item.find(class_="content_main_item_meta").text.strip()
             news_url = DOMEN + item.find("a").get("href")
-            image = item.find('picture')
-            if image:
-                source_tags = image.find_all('source')
-                if source_tags:
-                    image_url = DOMEN + source_tags[0].get('srcset') 
-            text_response = get_response(url_def=news_url) 
-            text1 = get_text(text_response)
-            tags = [text1[text] for text in range(1, len(text1))] if len(text1) > 0 else []
+            image_url = DOMEN + item.find('picture').find_all('source')[0].get('srcset') if item.find('picture') else ""
+            text_response = await get_response(url_def=news_url) 
+            text1, ai_text, tags = await get_text(text_response)
         except Exception as e:
             print(e)
         try:
@@ -103,8 +92,8 @@ def get_soup(response):
                 "date_time": date_time.text.strip() if date_time else "N/A",
                 "image": f"{image_url}",
                 "url": news_url,
-                "text": text1[0],
-                "ai_text": text1[1],
+                "text": text1,
+                "ai_text": ai_text,
                 "tags": tags if tags else "N/A",
             }
         except:
@@ -120,19 +109,17 @@ def get_soup(response):
         parse_news.append(all_to_json)
     return parse_news
 
-
-def news_parsing():
+async def news_parsing():
     soup = []
-    for i in range(1, 5):
-        response = get_response(url_def=URL+"/page/"f'{i}/')
+    for i in range(1, 2):
+        response = await get_response(url_def=URL + "/page/" + str(i) + '/')
         soup.append({
-            'id' : i,
-            'data' : get_soup(response)
-            })
+            'id': i,
+            'data': await get_soup(response)
+        })
         
-    with open(f"core//json//tengrinews.json", "w", encoding="UTF-8") as file:
-        json.dump(soup, file, indent=5, ensure_ascii=False)
-
+    with open("tengrinews.json", "w", encoding="UTF-8") as file:
+        json.dump(soup, file, indent=4, ensure_ascii=False)
     
 if __name__ == "__main__":
     news_parsing()
