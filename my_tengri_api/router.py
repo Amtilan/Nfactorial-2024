@@ -8,7 +8,7 @@ router = APIRouter(
     tags=["News"],
 )
 
-file_path = 'core/json/tengrinews.json'  # Use forward slashes for compatibility.
+file_path = 'tengrinews.json'  # Use forward slashes for compatibility.
 date1 = datetime.datetime.now()
 
 @router.get("")

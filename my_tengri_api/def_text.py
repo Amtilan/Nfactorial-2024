@@ -70,6 +70,7 @@ async def get_text(response):
     full_text = ' '.join(paragraph.get_text() for paragraph in paragraphs)
     ai_text = get_ai(full_text)
     return [full_text, ai_text, tags]    
+
 async def get_soup(response):
     parse_news = []
     soup = BeautifulSoup(response, 'html.parser')
