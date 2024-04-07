@@ -36,7 +36,7 @@ model = genai.GenerativeModel(model_name="gemini-1.0-pro",
                               safety_settings=safety_settings)
 
 def get_ai(full_text):
-    response = f"Твоя задача заключается в том чтобы полностью обьяснит всю важную информацию в новостной статье очень кратко и ясно.  {full_text}"
+    response = f"Твоя задача заключается в том чтобы полностью обьяснит всю важную информацию в новостной статье очень кратко и ясно. И ПИШИ ВСЁ В ОДНОЙ СТРОКЕ.   {full_text}"
     text1 = model.generate_content(response)
     # print(text1.text)
     return text1.text

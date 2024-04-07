@@ -3,13 +3,8 @@ const axios = require('axios').default;
 async function fetchNews() {
   try {
     // Replace 'your-api-endpoint' with the actual endpoint URL.
-    const response = await axios.get('http://127.0.0.1:8000/news');
+    const response = await axios.get('mytengriapi-production-15d1.up.railway.app');
     
-    // Assuming the response is in the format of the provided JSON data:
-    // {
-    //   "id": 1,
-    //   "data": [ ... ] 
-    // }
     const articles = response.data.data;
     
     // Log the title of each article.
