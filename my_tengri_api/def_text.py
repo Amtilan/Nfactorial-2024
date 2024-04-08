@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import json
 import asyncio
 import aiohttp
-import def_ai_text
+# import def_ai_text
 
 HEADERS = {
 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
@@ -14,6 +14,8 @@ HEADERS = {
 DOMEN = "http://tengrinews.kz"
 
 URL = "https://tengrinews.kz/tag/алматы"
+
+SEARCH_URL = "https://tengrinews.kz/search/?text="
 
 async def get_response(url_def, headers_def=HEADERS):
     async with aiohttp.ClientSession() as session:
@@ -34,8 +36,8 @@ async def get_text(url_def):
     tags_div = soup.find("div", class_="content_main_text_tags")
     tags = [span.get_text() for span in tags_div.find_all('span')] if tags_div else []
     full_text = ' '.join(paragraph.get_text() for paragraph in paragraphs)
-    ai_text = def_ai_text.get_ai(full_text)
-    return [full_text, ai_text, tags]    
+    # ai_text = def_ai_text.get_ai(full_text)
+    return [full_text, tags]    
 
 async def get_soup(response):
     parse_news = []
@@ -50,7 +52,7 @@ async def get_soup(response):
             date_time = item.find(class_="content_main_item_meta").text.strip()
             news_url = DOMEN + item.find("a").get("href")
             image_url = DOMEN + item.find('picture').find_all('source')[0].get('srcset') if item.find('picture') else ""
-            text1, ai_text, tags = await get_text(url_def=news_url)
+            text1, tags = await get_text(url_def=news_url)
         except Exception as e:
             print(e)
         try:
@@ -61,7 +63,7 @@ async def get_soup(response):
                 "image": f"{image_url}",
                 "url": news_url,
                 "text": text1,
-                "ai_text": ai_text,
+                # "ai_text": ai_text,
                 "tags": tags if tags else "N/A",
             }
         except:
@@ -77,6 +79,16 @@ async def get_soup(response):
         parse_news.append(all_to_json)
     return parse_news
 
+async def search_news(name):
+    soup = []
+    response = await(get_response(url_def=SEARCH_URL+name))
+    soup.append(
+        {
+            "data" : await get_soup(response)
+        }
+    )
+    return soup
+
 async def news_parsing():
     soup = []
     for i in range(1, 6):
@@ -85,7 +97,7 @@ async def news_parsing():
             'id': i,
             'data': await get_soup(response)
         })
-        
+    
     with open("tengrinews.json", "w", encoding="UTF-8") as file:
         json.dump(soup, file, indent=4, ensure_ascii=False)
     
