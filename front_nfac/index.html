@@ -6,21 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="hGOkN89tcJouPz2Raf4iHJh4Hp2tlE6u8OW3VKtG">
-    <title>Main News</title>
-    <meta name="Description"
-        content="Tengrinews.kz - главные новости Казахстана, России и мира о бизнесе, экономике, происшествиях, спорте">
-    <link rel="stylesheet" href="just.css">
-    <link rel="stylesheet" href="nfac-news-main.css">
+    <title>N!FAC News</title>
+    <link rel="icon" href="https://framerusercontent.com/images/CbSPyXMVIfZHAkc9RBEP7XhXEw.png">
+    <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="/favicon.ico?v=1" type="image/ico">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -29,6 +18,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Antic&family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antic&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
@@ -44,106 +37,192 @@
             <main class="container">
                 <div class="menu">
                     <div class="menu_nav">
-                        <a class="menu_logo" href="/"><img src="nfaclogo.webp"></a>
-                        <a href="#" class="logo-title">NFAC NEWS</a>
-                        <a class="menu_nav_item" href="/tag/Землетрясение/">Про Землетрясение!</a>
-                        <div class="search-container">
-                            <form action="/action_page.php">
-                                <input type="text" placeholder="Поиск" name="search">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                            </form>
+                        <a class="menu_logo" href="/"><img src="https://framerusercontent.com/images/CbSPyXMVIfZHAkc9RBEP7XhXEw.png"></a>
+                        <a href="" class="logo-title">NFAC NEWS</a>
+                        <a class="menu_nav_item" href="#" onclick="FetchByTags('землетрясение')" style="margin-left: 25px">Про Землетрясение!</a>
+                        
+                        <div class="searcher">
+                            <input class="search-bar" type="text" placeholder="Поиск" id="searchInput">
+                            <!-- <button class="search-button" id="searchButton"><i class="fa fa-search"></i></button> -->
                         </div>
+                        
                     </div>
                 </div>
 
-                <form class="menu_search" action="/search/">
-                    <input type="search" name="text" placeholder="Поиск">
-                </form>
-
-
                 <section class="first">
-                    <div class="breadcrumbs"><a class="breadcrumbs_first" href="/">Главная &nbsp;|&nbsp; </a>Новости
-                    </div>
-
                     <div class="head">
-                        <h1 class="head-rubric">Новости</h1>
+                        <h1 class="head-rubric" style="font-weight: 500;">Новости</h1>
                         <span class="head-tags">
-                            <a href="Вузы" class="subhead-tags">Вузы</a>
-                            <a href="университет" class="subhead-tags">университет</a>
-                            <a href="мина" class="subhead-tags">мина</a>
-                            <a href="Бомба" class="subhead-tags">Бомба</a>
-                            <a href="discounts" class="subhead-tags">Акции</a>
-                            <a href="Экология" class="subhead-tags">Экология</a>
-                            <a href="Алматы" class="subhead-tags">Алматы</a>
-                            <a href="МИД-РК" class="subhead-tags">МИД РК</a>
-                            <a href="Паводки" class="subhead-tags">Паводки</a>
-                            <a href="помощь" class="subhead-tags">помощь</a>
-                            <a href="Гуманитарная-помощь" class="subhead-tags">Гуманитарная помощь</a>
-                            <a href="Кыргызстан" class="subhead-tags">Кыргызстан</a>
-                            <a href="Кальян" class="subhead-tags">Кальян</a>
-                            <a href="Запрет" class="subhead-tags">Запрет</a>
-                            <a href="Полиция" class="subhead-tags">Полиция</a>
-                            <a href="Кафе" class="subhead-tags">Кафе</a>
-                            <a href="Бишимбаев-Куандык" class="subhead-tags">Бишимбаев Куандык</a>
-                            <a href="Нукенова_Салтанат" class="subhead-tags">Нукенова Салтанат</a>
-                            <a href="Суд" class="subhead-tags">Суд</a>
-                            <a href="судья" class="subhead-tags">судья</a>
-                            <a href="допрос" class="subhead-tags">допрос</a>
-                            <a href="Смерть" class="subhead-tags">Смерть</a>
-                            <a href="Убийство-" class="subhead-tags">Убийство </a>
-                            <a href="Драка" class="subhead-tags">Драка</a>
-                            <a href="СТО" class="subhead-tags">СТО</a>
-                            <a href="курс_доллара" class="subhead-tags">курс доллара</a>
-                            <a href="Тенге" class="subhead-tags">Тенге</a>
-                            <a href="токаев-касым-жомарт" class="subhead-tags">Токаев Касым-Жомарт</a>
-                            <a href="Поручение" class="subhead-tags">Поручение</a>
-                            <a href="казгидромет" class="subhead-tags">казгидромет</a>
-                            <a href="климат" class="subhead-tags">климат</a>
-                            <a href="ЗКО" class="subhead-tags">ЗКО</a>
-                            <a href="СКО" class="subhead-tags">СКО</a>
-                            <a href="ВКО" class="subhead-tags">ВКО</a>
-                            <a href="Осадки" class="subhead-tags">Осадки</a>
-                            <a href="МЧС-Казахстана" class="subhead-tags">МЧС Казахстана</a>
-                            <a href="Акимат" class="subhead-tags">Акимат</a>
-                            <a href="Режим-ЧС" class="subhead-tags">Режим ЧС</a>
-                            <a href="Вода" class="subhead-tags">Вода</a>
-                            <a href="Подтопление" class="subhead-tags">Подтопление</a>
-                            <a href="потоп" class="subhead-tags">потоп</a>
-                            <a href="Регионы" class="subhead-tags">Регионы</a>
-                            <a href="город" class="subhead-tags">город</a>
-                            <a href="СМИ" class="subhead-tags">СМИ</a>
-                            <a href="Блогер" class="subhead-tags">Блогер</a>
-                            <a href="Паводок" class="subhead-tags">Паводок</a>
-                            <a href="Инфекции" class="subhead-tags">Инфекции</a>
-                            <a href="Минздрав" class="subhead-tags">Минздрав</a>
-                            <a href="Здравоохранение" class="subhead-tags">Здравоохранение</a>
-                            <a href="Фейк" class="subhead-tags">Фейк</a>
-                            <a href="Соцсети" class="subhead-tags">Соцсети</a>
-                            <a href="Рассылка" class="subhead-tags">Рассылка</a>
-                            <a href="Алматинская-область" class="subhead-tags">Алматинская область</a>
-                            <a href="Село" class="subhead-tags">Село</a>
-                            <a href="Астана" class="subhead-tags">Астана</a>
-                            <a href="Штраф" class="subhead-tags">Штраф</a>
-                            <a href="Служба" class="subhead-tags">Служба</a>
-                            <a href="Проект" class="subhead-tags">Проект</a>
-                            <a href="Министерство_водных_ресурсов_и_ирригации" class="subhead-tags">Министерство водных
-                                ресурсов и ирригации</a>
-                            <a href="Парк" class="subhead-tags">Парк</a>
-                            <a href="Ремонт" class="subhead-tags">Ремонт</a>
-                            <a href="История" class="subhead-tags">История</a>
-                            <a href="Адвокат" class="subhead-tags">Адвокат</a>
-                            <a href="Скорая-помощь" class="subhead-tags">Скорая помощь</a>
+                            <a href= "#" class="subhead-tags" onclick="FetchByTags('Вузы')">Вузы</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('университет')">университет</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Акции')">Акции</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Экология')">Экология</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Алматы')">Алматы</a>
+                            <a href="#-" class="subhead-tags" onclick="FetchByTags('МИД РК')">МИД РК</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Паводки')">Паводки</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('помощь')">помощь</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Гуманитарная помощь')">Гуманитарная помощь</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Кыргызстан')">Кыргызстан</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Кальян')">Кальян</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Запрет')">Запрет</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Полиция')">Полиция</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Кафе')">Кафе</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Бишимбаев Куандык')">Бишимбаев Куандык</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Нукенова Салтанат')">Нукенова Салтанат</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Суд')">Суд</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('судья')">судья</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('допрос')">допрос</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Смерть')">Смерть</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Убийство')">Убийство</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Драка')">Драка</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('СТО')">СТО</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('курс доллара')">курс доллара</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Тенге')">Тенге</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Токаев Касым-Жомарт')">Токаев Касым-Жомарт</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Поручение')">Поручение</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('казгидромет')">казгидромет</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('климат')">климат</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('ЗКО')">ЗКО</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('СКО')">СКО</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('ВКО')">ВКО</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Осадки')">Осадки</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('МЧС Казахстана')">МЧС Казахстана</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Акимат')">Акимат</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Режим ЧС')">Режим ЧС</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Вода')">Вода</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Подтопление')">Подтопление</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('потоп')">потоп</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Регионы')">Регионы</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('город')">город</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('СМИ')">СМИ</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Блогер')">Блогер</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Паводок')">Паводок</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Инфекции')">Инфекции</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Минздрав')">Минздрав</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Здравоохранение')">Здравоохранение</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Фейк')">Фейк</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Соцсети')">Соцсети</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Рассылка')">Рассылка</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Алматинская область')">Алматинская область</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Село')">Село</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Астана')">Астана</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Штраф')">Штраф</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Служба')">Служба</a>
+                            <a href="#" class="subhead-tags" onclick="FetchByTags('Проект')">Проект</a>
                         </span>
                     </div>
 
                     <div class="content rubric">
-
+                        
                         <div class="content_main">
-
+                            <div id="loadingIndicator" class="loading-indicator">
+                                Загрузка...
+                            </div>    
+                              
                             <div class="container" id="news-container">
                                 
                                 <script>
+                                    function showLoadingIndicator() {
+                                        document.getElementById('loadingIndicator').style.display = 'flex'; 
+                                    }
+                                    
+                                    function hideLoadingIndicator() {
+                                        document.getElementById('loadingIndicator').style.display = 'none';
+                                    }
+                                    
+                                    
+                                    document.getElementById('searchInput').addEventListener('keydown', function(event) {
+                                        if (event.key === 'Enter') {
+                                            document.getElementById('paginationControls').style.display = 'none';
+                                            searchFunction(); 
+                                        }
+                                    });
+                                    
+                                    function searchFunction() {
+                                        FetchSearching(document.getElementById('searchInput').value);
+                                    }
+                                    async function FetchSearching(name) {
+                                        showLoadingIndicator();
+                                        try {
+                                            const response = await axios.get(`https://mytengriapi-production-15d1.up.railway.app/${name}`);
+                                            const articles = response.data['0'];
+                                            console.log(articles)
+                                            const newsContainer = document.getElementById('news-container');
+                                            newsContainer.innerHTML = ''; // Clear existing content
+                                            articles.data.forEach((article, index) => {
+                                                const articleDiv = document.createElement('div');
+                                                articleDiv.classList.add('news-article'); // Add a class for styling if needed
+                                                articleDiv.innerHTML = `
+                                                    <div class="main-news_super_item" style="border-radius: 10px;" onclick="toggleModal(${index})">
+                                                        <picture>
+                                                            <source srcset="${article.image}" type="image/jpeg">
+                                                            <source media="(max-width: 640px)" srcset="${article.image}" type="image/jpeg">
+                                                            <img class="main-news_top_item_img" loading="lazy" src="${article.image}">
+                                                        </picture>
+                                                        <span class="main-news_super_item_title">${article.title}</span>
+                                                        <div class="main-news_super_item_meta">
+                                                            <span><time>${article.date_time}</time></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-container" id="modal-${index}" style="display:none;">
+                                                        <div class="modal-window">
+                                                            <span class="close-modal" onclick="toggleModal(${index})">X</span>
+                                                            <h2 class="modalheading">${article.title}</h2>
+                                                            <p class="modalp">${article.text}</p>
+                                                        </div>
+                                                    </div>
+                                                `;
+                                                newsContainer.appendChild(articleDiv);
+                                            });
+                                        } catch (error) {
+                                            console.error('Error fetching news:', error);
+                                        }
+                                        finally {
+                                            hideLoadingIndicator();
+                                        }
+                                    }
+                                    async function FetchByTags(tag) {
+                                        showLoadingIndicator();
+                                        try {
+                                            document.getElementById('paginationControls').style.display = 'none';
+                                            const response = await axios.get(`https://mytengriapi-production-15d1.up.railway.app/tags/${tag}`);
+                                            const articles = response.data['0'];
+                                            const newsContainer = document.getElementById('news-container');
+                                            newsContainer.innerHTML = ''; // Clear existing content
+                                            articles.data.forEach((article, index) => {
+                                                const articleDiv = document.createElement('div');
+                                                articleDiv.classList.add('news-article'); // Add a class for styling if needed
+                                                articleDiv.innerHTML = `
+                                                    <div class="main-news_super_item" style="border-radius: 10px;" onclick="toggleModal(${index})">
+                                                        <picture>
+                                                            <source srcset="${article.image}" type="image/jpeg">
+                                                            <source media="(max-width: 640px)" srcset="${article.image}" type="image/jpeg">
+                                                            <img class="main-news_top_item_img" loading="lazy" src="${article.image}">
+                                                        </picture>
+                                                        <span class="main-news_super_item_title">${article.title}</span>
+                                                        <div class="main-news_super_item_meta">
+                                                            <span><time>${article.date_time}</time></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-container" id="modal-${index}" style="display:none;">
+                                                        <div class="modal-window">
+                                                            <span class="close-modal" onclick="toggleModal(${index})">X</span>
+                                                            <h2 class="modalheading">${article.title}</h2>
+                                                            <p class="modalp">${article.text}</p>
+                                                        </div>
+                                                    </div>
+                                                `;
+                                                newsContainer.appendChild(articleDiv);
+                                            });
+                                        } catch (error) {
+                                            console.error('Error fetching news:', error);
+                                        }
+                                        finally {
+                                            hideLoadingIndicator(); 
+                                        }
+                                    }
                                     async function fetchNews(page) {
+                                        showLoadingIndicator();
                                         try {
                                             const response = await axios.get(`https://mytengriapi-production-15d1.up.railway.app/allpages/${page}`);
                                             const articles = response.data;
@@ -178,6 +257,9 @@
                                         } catch (error) {
                                             console.error('Error fetching news:', error);
                                         }
+                                        finally {
+                                            hideLoadingIndicator(); 
+                                        }
                                     }
                                     
                                     let currentPage = 1
@@ -201,12 +283,43 @@
                                 
 
                         </div>
-                    <button onclick="changePage(1)">1</button>
-                    <button onclick="changePage(2)">2</button>
-                    <button onclick="changePage(3)">3</button>
-                    <button onclick="changePage(4)">4</button>
-                    <button onclick="changePage(5)">5</button>
+                    <div class="pagination" id="paginationControls">
+                        <button onclick="changePage(1)" class="pags">1</button>
+                        <button onclick="changePage(2)" class="pags">2</button>
+                        <button onclick="changePage(3)" class="pags">3</button>
+                        <button onclick="changePage(4)" class="pags">4</button>
+                        <button onclick="changePage(5)" class="pags">5</button>
+                    </div>
+                        
             </div>
         </div>
     </section>
 </main>
+<div class="nfac-ads">
+    <div class="block">
+        <a class="nfac-ad" href="https://youtu.be/rLhbZEBFAS4">
+            <img src="https://img.youtube.com/vi/rLhbZEBFAS4/0.jpg" alt="" class="preview">
+        </a>
+    </div>
+    <div class="block">
+        <a class="nfac-ad" href="https://youtu.be/jwEW-CeQpo8">
+            <img src="https://img.youtube.com/vi/jwEW-CeQpo8/0.jpg" alt="" class="preview">
+        </a>
+    </div>
+    <div class="block">
+        <a class="nfac-ad" href="https://youtu.be/ofquJCnElZI">
+            <img src="https://img.youtube.com/vi/ofquJCnElZI/0.jpg" alt="" class="preview">
+        </a>
+    </div>
+</div>
+<footer>
+    <div class="footer_top">
+        <a class="github" href="https://github.com/Amtilan"
+            style="display: flex; align-items: center; color: rgb(198, 220, 255); font-size: 30px"><img
+                src="github-icon.png" alt="">@Amtilan</a>
+        <a class="linkedin" href="https://www.linkedin.com/in/raiymbek-zhaxilikov-b724972b8/"
+            style="display: flex; align-items: center; color: rgb(198, 220, 255); font-size: 25px"><img
+                src="linkedin-icon.png">Zhaxilikov R.</a>
+        <p class="footer-text">Task #3 Special for Nfactorial Incubator</p>
+    </div>
+</footer>

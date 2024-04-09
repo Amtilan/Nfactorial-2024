@@ -36,7 +36,7 @@ async def get_text(url_def):
     tags_div = soup.find("div", class_="content_main_text_tags")
     tags = [span.get_text() for span in tags_div.find_all('span')] if tags_div else []
     full_text = ' '.join(paragraph.get_text() for paragraph in paragraphs)
-    # ai_text = def_ai_text.get_ai(full_text)
+
     return [full_text, tags]    
 
 async def get_soup(response):
@@ -45,13 +45,20 @@ async def get_soup(response):
     tags = []
     soup = BeautifulSoup(response, 'html.parser')
     all_news = soup.find_all("div", class_="content_main_item")
+    index = 0
     for item in all_news:
+        if index == 15:
+            break
+        index += 1
         try:
             title = item.find("span", class_="content_main_item_title").text
             description = item.find(class_="content_main_item_announce").text
             date_time = item.find(class_="content_main_item_meta").text.strip()
             news_url = DOMEN + item.find("a").get("href")
-            image_url = "https://tengrinews.kz" + item.find('picture').find_all('source')[0].get('srcset') if item.find('picture') else ""
+            if "https" not in item.find('picture').find_all('source')[0].get('srcset'):
+                image_url = "https://tengrinews.kz" + item.find('picture').find_all('source')[0].get('srcset') if item.find('picture') else ""
+            else:
+                image_url = item.find('picture').find_all('source')[0].get('srcset')  if item.find('picture') else ""
             text1, tags = await get_text(url_def=news_url)
         except Exception as e:
             print(e)
