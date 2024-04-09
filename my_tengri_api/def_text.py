@@ -36,7 +36,7 @@ async def get_text(url_def):
     tags_div = soup.find("div", class_="content_main_text_tags")
     tags = [span.get_text() for span in tags_div.find_all('span')] if tags_div else []
     full_text = ' '.join(paragraph.get_text() for paragraph in paragraphs)
-
+    # ai_text = def_ai_text.get_ai(full_text)
     return [full_text, tags]    
 
 async def get_soup(response):
@@ -51,7 +51,7 @@ async def get_soup(response):
             description = item.find(class_="content_main_item_announce").text
             date_time = item.find(class_="content_main_item_meta").text.strip()
             news_url = DOMEN + item.find("a").get("href")
-            image_url = DOMEN + item.find('picture').find_all('source')[0].get('srcset') if item.find('picture') else ""
+            image_url = "https://tengrinews.kz" + item.find('picture').find_all('source')[0].get('srcset') if item.find('picture') else ""
             text1, tags = await get_text(url_def=news_url)
         except Exception as e:
             print(e)
@@ -66,11 +66,20 @@ async def get_soup(response):
                 # "ai_text": ai_text,
                 "tags": tags if tags else "N/A",
             }
-            
             parse_news.append(all_to_json)
         except:
             pass
     return parse_news
+
+async def search_by_tags(name):
+    soup = []
+    response = await(get_response(url_def = "https://tengrinews.kz/tag/" + name))
+    soup.append(
+        {
+         "data" : await get_soup(response)
+         }
+    )
+    return soup
 
 async def search_news(name):
     soup = []

@@ -29,3 +29,7 @@ async def get_articles(name):
 @router.get('/{name}')
 async def det_find(name):
     return await def_text.search_news(name=name)
+
+@router.get('/tags/{name}')
+async def get_tags(name):
+    return await def_text.search_by_tags(name=name)

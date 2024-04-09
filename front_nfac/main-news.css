@@ -1364,7 +1364,7 @@ h1.head-single:after {
 }
 
 .date-time {
-    font-size: 14px;
+    font-size: 40px;
     color: #696c74
 }
 
@@ -2151,7 +2151,7 @@ img.tn-comment-other {
 }
 
 .tn-comment-item-content-metadata time {
-    color: #696c74
+    color: #696c74;
 }
 
 .tn-comment-item-content-text p {

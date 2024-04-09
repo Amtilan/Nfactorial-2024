@@ -21,7 +21,6 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
-    <link href="http://tengrinews.kz/tengri_newhttp://tengrinews.kz/tengri_new.css?id=cf205654666e31aab7b6" type="text/css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -47,9 +46,7 @@
                     <div class="menu_nav">
                         <a class="menu_logo" href="/"><img src="nfaclogo.webp"></a>
                         <a href="#" class="logo-title">NFAC NEWS</a>
-                        <a class="menu_nav_item" href="/news/">Новости</a>
-                        <a class="menu_nav_item" href="/article/">Статьи</a>
-                        <a class="menu_nav_item" href="/tag/что_будет_с_казахстаном/">Что будет с Казахстаном?</a>
+                        <a class="menu_nav_item" href="/tag/Землетрясение/">Про Землетрясение!</a>
                         <div class="search-container">
                             <form action="/action_page.php">
                                 <input type="text" placeholder="Поиск" name="search">
@@ -171,8 +168,8 @@
                                                     <div class="modal-container" id="modal-${index}" style="display:none;">
                                                         <div class="modal-window">
                                                             <span class="close-modal" onclick="toggleModal(${index})">X</span>
-                                                            <h2>${article.title}</h2>
-                                                            <p>${article.text}</p>
+                                                            <h2 class="modalheading">${article.title}</h2>
+                                                            <p class="modalp">${article.text}</p>
                                                         </div>
                                                     </div>
                                                 `;
