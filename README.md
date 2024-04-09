@@ -30,7 +30,7 @@
 - `def_ai_text.py` код саммарайзера
 - `main.py` Главный файл бэкенда
 - `router.py` Роутинг бэкенда
-
+    (https://mytengriapi-production-15d1.up.railway.app/)
 - `/allpages` это все доступные страницы с парсера
 - `/allpages/{page}` итерация по страницам
 - `/{name}` реализация поиска 
