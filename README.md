@@ -2,8 +2,8 @@
 
 # Ссылки на хостинг
 
-Ссылка на Backend - https://mytengriapi-production-15d1.up.railway.app/
-Ссылка на Frontend - https://nfactorial-2024.vercel.app/
+- Ссылка на Backend - https://mytengriapi-production-15d1.up.railway.app/
+- Ссылка на Frontend - https://nfactorial-2024.vercel.app/
 
 # Frontend
 
