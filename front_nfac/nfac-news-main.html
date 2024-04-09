@@ -9,13 +9,17 @@
     <title>N!fac NEWS</title>
     <meta name="Description"
         content="Tengrinews.kz - главные новости Казахстана, России и мира о бизнесе, экономике, происшествиях, спорте">
-    <link rel="stylesheet" href="just.css">
+    <link rel="stylesheet" href="nfac-news-main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="just.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Antic&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antic&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -25,29 +29,22 @@
         <div style="position: fixed; z-index: 25;">
             <div data-link=""></div>
         </div>
-        <header class="header">
-            <div class="header_sub container">
-                <div class="header_sub_tengri-rubrics">
-                    <a class="header_tengri-rubrics_item news active" href="https://tengrinews.kz/">NEWS</a>
-                    <a class="header_tengri-rubrics_item life" href="/mixnews/">LIFE</a>
-                    <a class="header_tengri-rubrics_item sport" href="https://tengrisport.kz/">SPORT</a>
-                    <a class="header_tengri-rubrics_item travel" href="https://tengritravel.kz/">TRAVEL</a>
-                    <a class="header_tengri-rubrics_item guide" href="/tengriguide/">GUIDE</a>
-                    <a class="header_tengri-rubrics_item edu" href="/tengri-education/">EDU</a>
-                    <a class="header_tengri-rubrics_item auto" href="https://tengriauto.kz/">AUTO</a>
-                </div>
-            </div>
-        </header>
+        
         <body>
             <main class="container">
                 <div class="menu">
                     <div class="menu_nav">
-                        <div class="menu_burger active"><img src="http://tengrinews.kz/edu/img/burger.svg"></div>
-                        <div class="menu_burger-x"><img src="http://tengrinews.kz/edu/img/burger-x.svg"></div>
-                        <a class="menu_logo" href="/"><img src="http://tengrinews.kz/tengri_new/img/logo.svg"></a>
-                        <a class="menu_nav_item" href="/news/">Новости</a>
+                        <a class="menu_logo" href="/"><img src="nfaclogo.webp"></a>
+                        <a href="#" class="logo-title">NFAC NEWS</a>
+                        <a class="menu_nav_item" href="main-news.html">Новости</a>
                         <a class="menu_nav_item" href="/article/">Статьи</a>
                         <a class="menu_nav_item" href="/tag/что_будет_с_казахстаном/">Что будет с Казахстаном?</a>
+                        <div class="search-container">
+                            <form action="/action_page.php">
+                              <input type="text" placeholder="Поиск" name="search">
+                              <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
@@ -57,10 +54,9 @@
 
 
                 <section class="three-column first">
-
                     <div class="three-column_main main-news_super">
-                        <div class="main-news_super_item">
-                            <a href="/kazakhstan_news/obraschenie-tokaeva-k-narodu-kazahstana-video-531441/">
+                        <div class="main-news_super_item" style="border-radius: 10px;">
+                            <a onclick="toggleModal()" style="border-radius: 10px;">
                                 <picture>
                                     <source srcset="http://tengrinews.kz/userdata/news/2024/news_530354/thumb_m/photo_466696.jpg"
                                         type="image/jpeg">
@@ -73,29 +69,38 @@
                                 </picture>
                             </a>
                             <span class="main-news_super_item_title">
-                                <a href="/kazakhstan_news/obraschenie-tokaeva-k-narodu-kazahstana-video-531441/">Обращение
+                                <a>Обращение
                                     Токаева к народу Казахстана: видео</a>
                             </span>
                             <div class="main-news_super_item_meta">
                                 <span>
                                     <time>Сегодня 13:00</time>
                                 </span>
-                                <span>
-                                    <span class="content_item_meta_viewings">
-                                        <img src="http://tengrinews.kz/tengri_new/img/viewings-white.svg">
-                                        <span class="tn-text-preloader-dark" data-views="" data-id="531441"
-                                            data-type="news" data-lang="ru" data-travel=""></span>
-                                    </span>
-                                    <span class="content_item_meta_comments">
-                                        <img src="http://tengrinews.kz/tengri_new/img/comments-white.svg">
-                                        <span class="tn-text-preloader-dark" data-comments="" data-id="531441"
-                                            data-type="news" data-lang="ru"></span>
-                                    </span>
-                                </span>
                             </div>
                         </div>
+                        <div class="modal-container" onclick="toggleModal()"></div>
+                        <div class="modal-window">
+                            <h2>Сколько осадков выпало в Алматы за сутки, сообщили синоптики</h2>
+                            <p>
+                                В Казгидромете рассказали, сколько осадков выпало в Алматы за прошедшие сутки, передает корреспондент
+                                Tengrinews.kz. В районе аэропорта выпало 16 миллиметров осадков, в центре города в районе Абая -
+                                Сейфуллина
+                                - 19 миллиметров, на Каменском плато - 29 миллиметров, на Чимбулаке - 29 миллиметров, БАО - 15
+                                миллиметров,
+                                Плато \"Мынжылкы\" - 15 миллиметров, на Медеу - 30 миллиметров. \"Вчера в районе 18:00 до 20:00
+                                наблюдались
+                                порывы ветра. В нижних районах Алматы - 15 метров в секунду, в горных - 18 метров в секунду. По городу
+                                месячная норма - 112 миллиметров. 17 процентов от месячной нормы осадков выпало в начале апреля в
+                                Алматы\",
+                                - сообщили в Казгидромете. Синоптики предупредили жителей Астаны и еще 6 городов. Наши новости теперь в
+                                WhatsApp! Подписывайтесь на наш канал в самом популярном мессенджере
+                            </p>
+                        </div>
+                        <script>
+                            const toggleModal = () => document.body.classList.toggle("open-modal");
+                        </script>
                         <div class="main-news_super_item">
-                            <a href="/kazakhstan_news/uroven-pereliva-vodohranilische-sko-stremitelno-531468/">
+                            <a onclick="toggleModal()">
                                 <picture>
                                     <source srcset="http://tengrinews.kz//userdata/news/2024/news_531468/thumb_m/photo_467992.jpeg"
                                         type="image/jpeg">
@@ -116,20 +121,29 @@
                                 <span>
                                     <time>Сегодня 20:40</time>
                                 </span>
-                                <span>
-                                    <span class="content_item_meta_viewings">
-                                        <img src="http://tengrinews.kz/tengri_new/img/viewings.svg">
-                                        <span class="tn-text-preloader-dark" data-views="" data-id="531468"
-                                            data-type="news" data-lang="ru" data-travel=""></span>
-                                    </span>
-                                    <span class="content_item_meta_comments">
-                                        <img src="http://tengrinews.kz/tengri_new/img/comments.svg">
-                                        <span class="tn-text-preloader-dark" data-comments="" data-id="531468"
-                                            data-type="news" data-lang="ru"></span>
-                                    </span>
-                                </span>
                             </div>
                         </div>
+                        <div class="modal-container" onclick="toggleModal()"></div>
+                        <div class="modal-window">
+                            <h2>Сколько осадков выпало в Алматы за сутки, сообщили синоптики</h2>
+                            <p>
+                                В Казгидромете рассказали, сколько осадков выпало в Алматы за прошедшие сутки, передает корреспондент
+                                Tengrinews.kz. В районе аэропорта выпало 16 миллиметров осадков, в центре города в районе Абая -
+                                Сейфуллина
+                                - 19 миллиметров, на Каменском плато - 29 миллиметров, на Чимбулаке - 29 миллиметров, БАО - 15
+                                миллиметров,
+                                Плато \"Мынжылкы\" - 15 миллиметров, на Медеу - 30 миллиметров. \"Вчера в районе 18:00 до 20:00
+                                наблюдались
+                                порывы ветра. В нижних районах Алматы - 15 метров в секунду, в горных - 18 метров в секунду. По городу
+                                месячная норма - 112 миллиметров. 17 процентов от месячной нормы осадков выпало в начале апреля в
+                                Алматы\",
+                                - сообщили в Казгидромете. Синоптики предупредили жителей Астаны и еще 6 городов. Наши новости теперь в
+                                WhatsApp! Подписывайтесь на наш канал в самом популярном мессенджере
+                            </p>
+                        </div>
+                        <script>
+                            const toggleModal = () => document.body.classList.toggle("open-modal");
+                        </script>
                         <div class="main-news_super_item">
                             <a href="/kazakhstan_news/pavodki-kazahstane-genprokuratura-zayavila-nachatyih-531465/">
                                 <picture>
@@ -2902,17 +2916,16 @@
 
 
                 <section class="section-banner">
-                    <div style="display: flex; justify-content: center;">
-                        
-                        
-
+                    <div style="display: flex; align-items: center; justify-content: space-around;">
+                        <img src="nfacad.webp" alt="" class="nfacad">
+                        <p>Долгожданный отбор на летний NFactorial Incubator</p>
                     </div>
                 </section>
 
                 <section class="top-news read">
                     <div class="subhead">
                         <h2 class="subhead-rubric">
-                            <a href="/read" class="subhead-rubric_read" style="font-family: Bebas Neue">Статьи</a>
+                            <a href="/read" class="subhead-rubric_read" style="font-family: Open Sans">Статьи</a>
                             <img src="http://tengrinews.kz/tengri_sport/img/head-arrow.svg" />
                         </h2>
                         <span class="subhead-tags">
@@ -4514,7 +4527,7 @@
                 <section class="section-banner">
                     <div class="tn-bottom-banner">
                         <div style="display: flex; justify-content: center;">
-                        
+
                             
                         </div>
                     </div>
@@ -4524,381 +4537,12 @@
 
             <footer>
                 <div class="footer_top">
-                    <a class="news" href="https://tengrinews.kz/"><img src="http://tengrinews.kz/tengri_new/img/tengri-news.svg"></a>
-                    <a class="life" href="https://tengrinews.kz/mixnews/"><img src="http://tengrinews.kz/guide/img/tengri-life.svg"></a>
-                    <a class="sport" href="https://tengrisport.kz/"><img src="http://tengrinews.kz/guide/img/tengri-sport.svg"></a>
-                    <a class="travel" href="https://tengritravel.kz/"><img src="http://tengrinews.kz/guide/img/tengri-travel.svg"></a>
-                    <a class="guide" href="https://tengrinews.kz/tengriguide/"><img src="http://tengrinews.kz/edu/img/tengri-guide.svg"></a>
-                    <a class="edu" href=https://tengrinews.kz/tengri-education/"><img
-                            src="http://tengrinews.kz/guide/img/tengri-edu.svg"></a>
-                    <a class="auto" href="https://tengriauto.kz/"><img src="http://tengrinews.kz/tengri_sport/img/tengri-auto.svg"></a>
-                </div>
-                <div class="footer_mid">
-                    <a href="/weather/">Погода в Казахстане</a>
-                    <a href="/sitemap/">Карта сайта</a>
-                    <a href="https://tengrinews.kz/tag/%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B/">Новости Алматы</a>
-                    <a href="https://tengrinews.kz/tag/%D0%9D%D1%83%D1%80-%D0%A1%D1%83%D0%BB%D1%82%D0%B0%D0%BD/">Новости
-                        Астаны</a>
-                    <a href="https://tengrinews.kz/tag/%D0%A8%D1%8B%D0%BC%D0%BA%D0%B5%D0%BD%D1%82-/">Новости
-                        Шымкента</a>
-                    <a href="https://tengrinews.kz/tag/%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B0/">Новости
-                        Караганды </a>
-                    <a href="https://tengrinews.kz/tag/%D0%90%D0%BA%D1%82%D0%BE%D0%B1%D0%B5/">Новости Актобе</a>
-                    <a
-                        href="https://tengrinews.kz/tag/%D0%A3%D1%81%D1%82%D1%8C-%D0%9A%D0%B0%D0%BC%D0%B5%D0%BD%D0%BE%D0%B3%D0%BE%D1%80%D1%81%D0%BA/">Новости
-                        Усть-Каменогорска</a>
-                    <a href="https://tengrinews.kz/tag/%D0%A3%D1%80%D0%B0%D0%BB%D1%8C%D1%81%D0%BA/">Новости Уральска</a>
-                    <a href="https://tengrinews.kz/tag/%D0%9A%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%B0%D0%B9/">Новости
-                        Костаная</a>
-                    <a href="https://tengrinews.kz/tag/%D0%9A%D1%8B%D0%B7%D1%8B%D0%BB%D0%BE%D1%80%D0%B4%D0%B0/">Новости
-                        Кызылорды</a>
-                    <a href="https://tengrinews.kz/tag/%D0%90%D1%82%D1%8B%D1%80%D0%B0%D1%83/">Новости Атырау</a>
-                    <a href="https://tengrinews.kz/tag/%D0%90%D0%BA%D1%82%D0%B0%D1%83/">Новости Актау</a>
-                    <a href="https://tengrinews.kz/usa/">Новости США</a>
-                    <a href="https://tengrinews.kz/russia/">Новости России</a>
-                    <a href="https://tengrinews.kz/tag/%D0%A3%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D0%B0/">Новости Украины</a>
-                    <a href="https://tengrinews.kz/tag/%D0%95%D0%90%D0%AD%D0%A1/">Новости ЕАЭС</a>
-                    <a href="https://tengrinews.kz/tag/%D0%A3%D0%B7%D0%B1%D0%B5%D0%BA%D0%B8%D1%81%D1%82%D0%B0%D0%BD/">Новости
-                        Узбекистана</a>
-                    <a
-                        href="https://tengrinews.kz/tag/%D0%AD%D0%BD%D0%B5%D1%80%D0%B3%D0%B5%D1%82%D0%B8%D0%BA%D0%B0/">Энергетика</a>
-                    <a href="https://tengrinews.kz/crime/">Преступность</a>
-                    <a href="https://tengrinews.kz/events/">События</a>
-                    <a href="https://tengrinews.kz/tag/%D0%A7%D0%9F/">Чрезвычайные происшествия</a>
-                    <a href="https://tengrinews.kz/tag/%D0%9A%D1%80%D1%83%D1%88%D0%B5%D0%BD%D0%B8%D0%B5/">Катастрофы</a>
-                    <a href="https://tengrinews.kz/football/">Футбол</a>
-                    <a href="https://tengrinews.kz/tennis/">Теннис</a>
-                    <a
-                        href="https://tengrinews.kz/tag/%D0%9A%D0%B8%D0%B1%D0%B5%D1%80%D1%81%D0%BF%D0%BE%D1%80%D1%82/">Киберспорт</a>
-                    <a href="https://tengrinews.kz/boxing/">Бокс</a>
-                    <a href="https://tengrinews.kz/hockey/">Хоккей</a>
-                    <a href="/politic/">Политика</a>
-                    <a href="https://on.kz/">Новости спорта</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </div>
-                <div class="footer_mob">
-                    <div class="footer_mob_itm">
-                        <a href="/news/">Новости</a>
-                        <a href="/article/">Статьи</a>
-
-                        <a href="/find-out/">Популярные темы</a>
-                        <a href="/authors/">Авторы</a>
-                        <a href="/weather/">Погода</a>
-                    </div>
-                    <div class="footer_mob_itm">
-                        <a href="/about/">О проекте</a>
-                        <a href="/contact/">Контакты редакции</a>
-                        <a href="/job/">Вакансии</a>
-                        <a href="https://alashmg.kz/ru/advertising/project/tengrinews">Реклама</a>
-                        <a href="/press_releases/">Пресс-релизы</a>
-                    </div>
-                </div>
-                <div class="footer_sec">
-                    <div class="footer_sec_item">
-                        <a href="https://tengrinews.kz/page/about/">О проекте</a>
-                        <a href="https://tengrinews.kz/page/contact/">Контакты редакции</a>
-                        <a href="https://tengrinews.kz/job/">Вакансии</a>
-                        <a href="https://alashmg.kz/ru/advertising/project/tengrinews">Реклама</a>
-                    </div>
-
-                    <div class="footer_sec_feedback">
-                        <div class="footer_sec_feedback_adv_phone">
-                            <span>Редакция</span>
-                            <img src="http://tengrinews.kz/tengri_new/img/phone.svg"> <a
-                                href="https://api.whatsapp.com/send?phone=77770014499&text=%20">&nbsp; +7 (777) 001 44
-                                99</a>
-                        </div>
-                        <div class="footer_sec_feedback_adv_phone">
-                            <span>Реклама</span>
-                            <img src="http://tengrinews.kz/tengri_new/img/phone.svg"> <a
-                                href="https://api.whatsapp.com/send?phone=77003888188&text=%20">&nbsp; +7 (700) 3 888
-                                188</a>
-                        </div>
-                        <div class="footer_sec_feedback_social_title">
-                            Социальные сети:
-                        </div>
-                        <div class="footer_sec_feedback_social">
-                            <a href="https://www.instagram.com/tengrinewskz/"><img
-                                    src="http://tengrinews.kz/tengri_new/img/footer-in.svg"></a>
-                            <a href="https://telegram.me/tengrinews/"><img src="http://tengrinews.kz/tengri_new/img/footer-tg.svg"></a>
-                            <a href="https://vk.com/tengrinews"><img src="http://tengrinews.kz/tengri_new/img/footer-vk.svg"></a>
-                            <a href="https://www.facebook.com/Tengrinews.kz/"><img
-                                    src="http://tengrinews.kz/tengri_new/img/footer-fb.svg"></a>
-                            <a href="https://twitter.com/tengrinewskz"><img src="http://tengrinews.kz/tengri_new/img/footer-x.svg"></a>
-                            <a href="https://www.youtube.com/@TengrinewsTVKZ"><img
-                                    src="http://tengrinews.kz/tengri_new/img/footer-yt.svg"></a>
-                            <a href="https://www.tiktok.com/@tengrinewskz"><img src="http://tengrinews.kz/tengri_new/img/footer-tk.svg"></a>
-                            <a href="https://www.whatsapp.com/channel/0029VaC8d1M3AzNVm4DlYk2H"><img
-                                    src="http://tengrinews.kz/tengri_new/img/footer-wa.svg"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer_bot container">
-                    <span class="footer_bot_copyright">
-                        © 2008-2024 ТОО «EML»
-                        <img src="http://tengrinews.kz/edu/img/18+.svg" />
-                        <a href="https://tengrinews.kz/page/information/">Правила использования материалов</a>
-                        <a href="https://tengrinews.kz/page/confidential/">Политика конфиденциальности</a>
-                    </span>
-                    <div class="footer_bot_apps">
-                        <span class="footer_bot_apps_text">Скачать наше приложение</span>
-                        <a href="https://apps.apple.com/kz/app/tengrinews-for-iphone/id510927516"><img
-                                src="http://tengrinews.kz/edu/img/app_ios.svg"></a>
-                        <a href="https://play.google.com/store/apps/details?id=kz.tengrinews&pli=1"><img
-                                src="http://tengrinews.kz/edu/img/app_android.svg"></a>
-                        <a
-                            href="https://appgallery.huawei.com/app/C101462841?sharePrepath=ag&locale=ru_RU&source=appshare&subsource=C101462841"><img
-                                src="http://tengrinews.kz/edu/img/app_huawei.svg"></a>
-                        <img class="mob-danger" src="http://tengrinews.kz/edu/img/18+.svg" />
-                    </div>
+                    <a class="github" href="https://github.com" style="display: flex; align-items: center; color: rgb(198, 220, 255); font-size: 30px"><img src="github-icon.png" alt="">@Amtilan</a>
+                    <a class="linkedin" href="https://linkedin.com" style="display: flex; align-items: center; color: rgb(198, 220, 255); font-size: 25px"><img src="linkedin-icon.png">Zhaxilikov R.</a>
+                    <p class="footer-text">Task #3 Special for Nfactorial Incubator</p>
                 </div>
             </footer>
-            <div class="mobile active">
-                <a class="mobile_tengri" href="https://tengrinews.kz/"><img
-                        src="http://tengrinews.kz/tengri_new/img/mob-tengri-active.svg"></a>
-                <a class="mobile_sport" href="https://tengrinews.kz/tengri-sport/"><img
-                        src="http://tengrinews.kz/edu/img/mob-sport.svg"></a>
-                <a class="mobile_life" href="https://tengrinews.kz/mixnews/"><img src="http://tengrinews.kz/edu/img/mob-life.svg"></a>
-                <a class="mobile_auto" href="https://tengriauto.kz/"><img src="/auto/img/mob-auto.svg"></a>
-                <img class="mobile_icon" src="http://tengrinews.kz/edu/img/mob-menu.svg">
-            </div>
-            <div class="mobile_show">
-                <div class="mobile_show_container">
-                    <div class="mobile_show_swipe_overlay">
-                        <div class="mobile_show_swipe_line"></div>
-                    </div>
-                    <div class="mobile_show_scrollable_container">
-                        <img class="mobile_menu_close" src="http://tengrinews.kz/tengri_new/img/mob-menu-close.svg">
-                        <div class="mobile_show_projects">
-                            <a class="mobile_show_projects_tengri" href="https://tengrinews.kz/"><img
-                                    src="http://tengrinews.kz/tengri_new/img/mobile-tengri.svg"></a>
-                            <a class="mobile_show_projects_life" href="https://tengrinews.kz/mixnews/"><img
-                                    src="http://tengrinews.kz/edu/img/mobile-life.svg"></a>
-                            <a class="mobile_show_projects_sport" href="https://tengrisport.kz/"><img
-                                    src="http://tengrinews.kz/edu/img/mobile-sport.svg"></a>
-                            <a class="mobile_show_projects_travel" href="https://tengritravel.kz/"><img
-                                    src="http://tengrinews.kz/edu/img/mobile-travel.svg"></a>
-                            <a class="mobile_show_projects_guide" href="https://tengrinews.kz/tengriguide/"><img
-                                    src="http://tengrinews.kz/edu/img/mobile-guide.svg"></a>
-                            <a class="mobile_show_projects_edu" href="https://tengrinews.kz/tengri-education/"><img
-                                    src="http://tengrinews.kz/guide/img/mobile-edu.svg"></a>
-                            <a class="mobile_show_projects_auto" href="https://tengriauto.kz/"><img
-                                    src="http://tengrinews.kz/edu/img/mobile-auto.svg"></a>
-                        </div>
-                        <div class="mobile_show_links">
-                            <a class="mobile_show_links_item" href="/news/">
-                                <span>Новости</span>
-                                <img class="mobile_menu" src="http://tengrinews.kz/edu/img/mobile-right.svg">
-                            </a>
-                            <a class="mobile_show_links_item" href="/article/">
-                                <span>Статьи</span>
-                                <img class="mobile_menu" src="http://tengrinews.kz/edu/img/mobile-right.svg">
-                            </a>
-                            <a class="mobile_show_links_item" href="/tag/что_будет_с_казахстаном/">
-                                <span>Что будет с Казахстаном?</span>
-                                <img class="mobile_menu" src="http://tengrinews.kz/edu/img/mobile-right.svg">
-                            </a>
-
-
-
-
-
-
-
-
-
-                            <a class="mobile_show_links_item"
-                                href="https://alashmg.kz/ru/advertising/project/tengrinews">
-                                <span>Реклама</span>
-                                <img class="mobile_menu" src="http://tengrinews.kz/edu/img/mobile-right.svg">
-                            </a>
-                        </div>
-
-                        <div class="mobile_course">
-                            <p>Курс валют</p>
-                            <span class="tn-course">
-                                <i class="tn-icon-course tn-icon-dollar"></i> &nbsp;446.77&nbsp;
-                                <img src="http://tengrinews.kz/tengri_new/img/course-up.svg">
-                            </span>
-                            <span class="tn-course">
-                                <i class="tn-icon-course tn-icon-euro"></i> &nbsp;483&nbsp;
-                                <img src="http://tengrinews.kz/tengri_new/img/course-up.svg">
-                            </span>
-                            <span class="tn-course">
-                                <i class="tn-icon-course tn-icon-ruble"></i> &nbsp;4.85&nbsp;
-                                <img src="http://tengrinews.kz/tengri_new/img/course-down.svg">
-                            </span>
-                        </div>
-
-                        <p> &nbsp;</p>
-
-                        <div class="tn-weather-menu tn-mobile">
-                            <p>Погода</p>
-                            <select data-weather="select" class="tn-input-select">
-                                <option value="162">Алматы</option>
-                                <option value="163">Астана</option>
-                                <option value="29575">Актау</option>
-                                <option value="20273">Актобе</option>
-                                <option value="10291">Атырау</option>
-                                <option value="10293">Балхаш</option>
-                                <option value="10308">Жезказган</option>
-                                <option value="164">Караганда</option>
-                                <option value="20809">Кокшетау</option>
-                                <option value="10295">Костанай</option>
-                                <option value="21050">Кызылорда</option>
-                                <option value="190">Павлодар</option>
-                                <option value="10298">Петропавловск</option>
-                                <option value="165">Семей</option>
-                                <option value="10303">Талдыкорган</option>
-                                <option value="21094">Тараз</option>
-                                <option value="21106">Туркестан</option>
-                                <option value="10305">Уральск</option>
-                                <option value="10306">Усть-Каменогорск</option>
-                                <option value="221">Шымкент</option>
-                            </select>
-                            <div class="tn-weather-menu-container">
-                                <span class="tn-weather-temp" data-weather="temperature"></span>
-                                <span class="tn-weather-text" data-weather="text"></span>
-                            </div>
-                        </div>
-
-                        <p> &nbsp;</p>
-
-                        <div class="mobile_show_contacts">
-                            <span class="mobile_show_title">Редакция</span>
-                            <div class="mobile_show_contacts_phone">
-                                <a href="https://api.whatsapp.com/send?phone=77770014499&text=%20"><img
-                                        src="http://tengrinews.kz/tengri_new/img/phone.svg">&nbsp; +7 (777) 001 44 99</a>
-                            </div>
-                            <span class="mobile_show_title">Реклама</span>
-                            <div class="mobile_show_contacts_phone">
-                                <a href="https://api.whatsapp.com/send?phone=77003888188&text=%20"><img
-                                        src="http://tengrinews.kz/tengri_new/img/phone.svg">&nbsp; +7 (700) 3 888 188</a>
-                            </div>
-                        </div>
-                        <div class="mobile_show_social">
-                            <span class="mobile_show_title">Социальные сети</span>
-                            <div class="mobile_show_social_div">
-                                <a href="https://www.instagram.com/tengrinewskz/"><img
-                                        src="http://tengrinews.kz/tengri_new/img/mob-in.svg"></a>
-                                <a href="https://telegram.me/tengrinews/"><img src="http://tengrinews.kz/tengri_new/img/mob-tg.svg"></a>
-                                <a href="https://vk.com/tengrinews"><img src="http://tengrinews.kz/tengri_new/img/mob-vk.svg"></a>
-                                <a href="https://www.facebook.com/Tengrinews.kz/"><img
-                                        src="http://tengrinews.kz/tengri_new/img/mob-fb.svg"></a>
-                                <a href="https://twitter.com/tengrinewskz"><img src="http://tengrinews.kz/tengri_new/img/mob-x.svg"></a>
-                                <a href="https://www.youtube.com/@TengrinewsTVKZ"><img
-                                        src="http://tengrinews.kz/tengri_new/img/mob-yt.svg"></a>
-                                <a href="https://www.tiktok.com/@tengrinewskz"><img
-                                        src="http://tengrinews.kz/tengri_new/img/mob-tk.svg"></a>
-                                <a href="https://www.whatsapp.com/channel/0029VaC8d1M3AzNVm4DlYk2H"><img
-                                        src="http://tengrinews.kz/tengri_new/img/mob-wa.svg"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="overl">
-
-
-
-
-
-
-
-            </div>
             <div data-analytics=""></div>
-    </div>
-    <div class="tn-line-banner">
-        <div class="bannerline">
-            <span style="position: absolute; right: 10px; top: 10px; cursor: pointer;z-index:10;"
-                onclick="closebannerline()">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2.2218" y="0.807617" width="24" height="2" transform="rotate(45 2.2218 0.807617)"
-                        fill="var(--gray_10)"></rect>
-                    <rect x="0.807617" y="17.7781" width="24" height="2" transform="rotate(-45 0.807617 17.7781)"
-                        fill="var(--gray_10)"></rect>
-                </svg>
-            </span>
-            <!--Тип баннера: [Tengrinews 2.0] [Desktop] 400x400 | Малый Bannerline-->
-            
-        </div>
-    </div>
-    <div class="tn-line-banner-left">
-        <div class="bannerline">
-            <span style="position: absolute; right: 10px; top: 10px; cursor: pointer;" onclick="closebannerline200()">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="2.2218" y="0.807617" width="24" height="2" transform="rotate(45 2.2218 0.807617)"
-                        fill="var(--gray_10)"></rect>
-                    <rect x="0.807617" y="17.7781" width="24" height="2" transform="rotate(-45 0.807617 17.7781)"
-                        fill="var(--gray_10)"></rect>
-                </svg>
-            </span>
-            <!--Тип баннера: [Tengrinews 2.0] [Desktop] 200x200 | Малый Bannerline-->
-            <!--Расположение: верх страницы-->
-        </div>
-    </div>
-    <div class="tn-branding-banner">
-        <div class="out-branding">
-            <!--AdFox START-->
-            <!--yandex_OrangeMediakz-->
-            <!--Площадка: Tengrinews.kz / Остальные разделы / [Tengrinews] [Desktop] Брендирование-->
-            <!--Категория: <не задана>-->
-            <!--Тип баннера: [Tengrinews] [Desktop] Брендирование-->
-        </div>
-        <div class="branding-right">
-        </div>
-    </div>
-    <div class="tn-fullscreen-banner">
-        <div class="fullscreen">
-            <!--Тип баннера: [Tengrinews 2.0] [Desktop] Fullscreen-->
-        </div>
     </div>
 </body>
 

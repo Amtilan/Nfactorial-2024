@@ -21,7 +21,7 @@ async def get_response(url_def, headers_def=HEADERS):
     async with aiohttp.ClientSession() as session:
         async with session.get(url=url_def, headers=headers_def) as response:
             if response.status == 200:
-                return await response.text()  # Использование .text() вместо .read() для получения текста ответа
+                return await response.text() 
             else:
                 return f"Bad response {response.status}"
 
@@ -36,7 +36,7 @@ async def get_text(url_def):
     tags_div = soup.find("div", class_="content_main_text_tags")
     tags = [span.get_text() for span in tags_div.find_all('span')] if tags_div else []
     full_text = ' '.join(paragraph.get_text() for paragraph in paragraphs)
-    # ai_text = def_ai_text.get_ai(full_text)
+
     return [full_text, tags]    
 
 async def get_soup(response):
@@ -66,17 +66,10 @@ async def get_soup(response):
                 # "ai_text": ai_text,
                 "tags": tags if tags else "N/A",
             }
+            
+            parse_news.append(all_to_json)
         except:
-            all_to_json = {
-                "title": title if title else "N/A",
-                "description": description if description else "N/A",
-                "date_time": date_time if date_time else "N/A",
-                "image": f"{image_url}",
-                "url": news_url,
-                "text": text1,
-                "tags": tags
-            }
-        parse_news.append(all_to_json)
+            pass
     return parse_news
 
 async def search_news(name):
